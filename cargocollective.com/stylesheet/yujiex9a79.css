@@ -290,8 +290,21 @@ body[data-pagetype="project"] .view_all {
  */
 
 .set_thumbs_wrapper {
-	clear: both;
-	margin-bottom: 35px;
+  clear: both;
+  margin-bottom: 35px;
+
+  /* NEW: Add grid layout */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  align-items: start;
+}
+
+.set_thumbs_wrapper a img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  display: block;
 }
 
 .set_thumbs_wrapper:first-child {
@@ -706,21 +719,35 @@ blockquote {
   justify-content: space-between;
   transform: translateY(-50%);
   z-index: 1000;
-  pointer-events: none;
-
+  pointer-events: none; /* prevent layout from intercepting events */
 }
 
 .slideshow_navigation a {
   pointer-events: all;
-  color: #dddddd99;
-  font-size: 40px;
-  text-decoration: none;
   padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.slideshow_navigation a:hover {
-  color: #e1ff00;
+/* Style for the inline SVG arrows */
+.arrow-icon {
+  width: 40px;
+  height: auto;
+  stroke: #dddddd99;
+  transition: stroke 0.3s ease;
 }
+
+/* Flip the right arrow */
+.arrow-icon.flipped {
+  transform: scaleX(-1);
+}
+
+/* Hover effect on arrow */
+.slideshow_navigation a:hover .arrow-icon {
+  stroke: #e1ff00;
+}
+
 
 
 .slideshow_thumbnails {
@@ -1560,6 +1587,22 @@ body::after {
   .commission-entry {
     flex-direction: column;
   }
+}
+
+/*
+ *animation
+*/
+
+[data-animate] {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  will-change: opacity, transform;
+}
+
+[data-animate].animate-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /*

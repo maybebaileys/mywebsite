@@ -609,31 +609,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function animateOnScroll() {
   const elements = document.querySelectorAll('[data-animate]');
-
   elements.forEach(el => {
     const rect = el.getBoundingClientRect();
-    const inView = rect.top <= window.innerHeight && rect.bottom >= 0;
+    const inView = rect.top < window.innerHeight * 0.85;
 
-    if (inView && !el.dataset.animated) {
-      el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-      el.style.opacity = '1';
-      el.style.transform = 'translateY(0)';
-      el.dataset.animated = 'true'; // prevent reanimation
+    if (inView && !el.classList.contains('animate-visible')) {
+      el.classList.add('animate-visible');
     }
   });
 }
 
-// Set initial hidden style on load
-window.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-animate]').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(40px)';
-  });
+['DOMContentLoaded', 'scroll', 'resize'].forEach(evt =>
+  window.addEventListener(evt, animateOnScroll)
+);
 
-  animateOnScroll(); // run once on load
-});
-
-window.addEventListener('scroll', animateOnScroll);
-window.addEventListener('resize', animateOnScroll);
-window.addEventListener('load', animateOnScroll);
 

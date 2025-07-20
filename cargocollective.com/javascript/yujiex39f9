@@ -585,52 +585,55 @@ Cargo.Event.on("element_resizer_init", function( plugin ) {
 /**
  * slideshow
  */
-
+document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.slideshow_container');
   const prev = document.querySelector('.prev-slide');
   const next = document.querySelector('.next-slide');
 
-  const scrollAmount = container.offsetWidth; // scroll one image width
+  const slideWidth = container.querySelector('img').offsetWidth;
 
-  prev.addEventListener('click', (e) => {
+  prev.addEventListener('click', e => {
     e.preventDefault();
-    container.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+    container.scrollBy({ left: -slideWidth, behavior: 'smooth' });
   });
 
-  next.addEventListener('click', (e) => {
+  next.addEventListener('click', e => {
     e.preventDefault();
-    container.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+    container.scrollBy({ left: slideWidth, behavior: 'smooth' });
   });
-
+});
 
 /**
  * animation
  */
 
-  function animateOnScroll() {
-    const elements = document.querySelectorAll('[data-animate]');
+function animateOnScroll() {
+  const elements = document.querySelectorAll('[data-animate]');
 
-    elements.forEach(el => {
-      const rect = el.getBoundingClientRect();
-      const inView = rect.top < window.innerHeight * 0.9;
+  elements.forEach(el => {
+    const rect = el.getBoundingClientRect();
+    const inView = rect.top <= window.innerHeight && rect.bottom >= 0;
 
-      if (inView && !el.dataset.animated) {
-        el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
-        el.style.opacity = '1';
-        el.style.transform = 'translateY(0)';
-        el.dataset.animated = 'true'; // prevent reanimation
-      }
-    });
-  }
+    if (inView && !el.dataset.animated) {
+      el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+      el.style.opacity = '1';
+      el.style.transform = 'translateY(0)';
+      el.dataset.animated = 'true'; // prevent reanimation
+    }
+  });
+}
 
-  // Set initial hidden style on load
-  window.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('[data-animate]').forEach(el => {
-      el.style.opacity = '0';
-      el.style.transform = 'translateY(40px)';
-    });
-
-    animateOnScroll(); // run once on load
+// Set initial hidden style on load
+window.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('[data-animate]').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(40px)';
   });
 
-  window.addEventListener('scroll', animateOnScroll);
+  animateOnScroll(); // run once on load
+});
+
+window.addEventListener('scroll', animateOnScroll);
+window.addEventListener('resize', animateOnScroll);
+window.addEventListener('load', animateOnScroll);
+

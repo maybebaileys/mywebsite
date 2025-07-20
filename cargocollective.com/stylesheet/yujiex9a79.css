@@ -683,10 +683,6 @@ blockquote {
     transition: transform 0.3s ease; /* Smooth zoom effect on hover */
 }
 
-.slideshow img:hover {
-    transform: scale(1.05); /* Slight zoom on hover */
-}
-
 .slideshow_container {
     display: flex;
     flex-wrap: nowrap;
@@ -723,7 +719,7 @@ blockquote {
 }
 
 .slideshow_navigation a:hover {
-  color: rgba(19, 0, 145, 0.908);
+  color: #e1ff00;
 }
 
 

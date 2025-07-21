@@ -534,13 +534,13 @@ header {
 
 /* Extra Small Screens (Phones, <600px) */
 @media (max-width: 600px) {
-  header {
+  .header {
     padding: 16px 20px;
     flex-wrap: wrap;
     justify-content: space-between;
   }
 
-   .container {
+  .container {
     padding: 0 20px; /* smaller padding on mobile */
   }
   .about-content {
@@ -551,7 +551,7 @@ header {
 
   .nav {
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 10px;
     margin-top: 10px;
   }
 
@@ -561,11 +561,11 @@ header {
   }
 
   .nav-item {
-    font-size: 18px;
+    font-size: 13px;
   }
 
   .nav-item a {
-    font-size: 18px;
+    font-size: 13px;
   }
 
   .container {
@@ -605,7 +605,7 @@ header {
 
   .commission-media iframe {
     width: 100%;
-    height: auto;
+    min-height: 360px;
     aspect-ratio: 16 / 9;
   }
 }
@@ -620,6 +620,11 @@ header {
     padding: 10px 0;
   }
 
+   .nav {
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
   .nav-item {
     width: 100%;
   }
@@ -627,5 +632,20 @@ header {
   .dropdown a {
     display: block;
     padding: 8px 12px;
+  }
+
+    .commission-info {
+    font-size: 12px;
+    padding: 0 10px;
+  }
+
+  .commission-media {
+    min-height: 180px;
+  }
+
+  .commission-media iframe {
+    width: 100%;
+    min-height: 360px;
+    aspect-ratio: 16 / 9;
   }
 }

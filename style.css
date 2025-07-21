@@ -119,7 +119,7 @@ header {
 }
 
 /* About page full background */
-.index-page {
+.about-page {
   background-image: url('images/aboutbg.gif');
   background-size: cover;
   background-position: center;
@@ -129,7 +129,7 @@ header {
   position: relative;
 }
 
-.index-page::before {
+.about-page::before {
   content: "";
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
@@ -417,7 +417,7 @@ header {
   padding: 0;
   margin: 0;
   width:100%;
-  height:1000px;
+  height:850px;
   max-width: 900px;
 }
 
@@ -548,7 +548,6 @@ header {
     display: flex;
     flex-direction: column;
     gap: 12px;
-    border-bottom: 1px solid #ccc;
     padding-bottom: 24px;
   }
 
@@ -564,8 +563,6 @@ header {
 
   .projectlist-text a {
     font-size: 14px;
-    color: #000;
-    text-decoration: underline;
     margin-top: 8px;
   }
 

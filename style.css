@@ -18,7 +18,7 @@ body {
 .container {
   max-width: 1800px;
   margin: 120px auto 40px;
-  padding: 0 60px; /* updated from 40px to 60px */
+  padding: 0 60px; 
   box-sizing: border-box;
 }
 
@@ -28,7 +28,7 @@ body {
 }
 
 .smaller {
-  font-size: 12px; /* no change here */
+  font-size: 12px;
 }
 
 a:link,
@@ -52,7 +52,7 @@ header {
   display: flex;
   justify-content: flex-start;
   align-items: center;
-  padding: 20px 100px; /* Match .container's horizontal padding */
+  padding: 20px 100px;
   z-index: 999;
   box-sizing: border-box;
 }
@@ -381,7 +381,7 @@ header {
 .grid { 
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-gap:45px;
+  grid-gap:55px;
   align-items:center;
   justify-content: center;
  }
@@ -390,9 +390,9 @@ header {
   width: 100%;
   height: auto;
   object-fit: contain;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
   min-width: 250px;
-  max-width: 780px;
+  max-width: 660px;
 }
 
 /* 动态跨列处理 */
@@ -403,7 +403,7 @@ header {
 .grid img:nth-child(3n+2) {
   grid-row: span 1; 
 }
-.grid img:nth-child(5n+2) {
+.grid img:nth-child(5n+3) {
   grid-column: span 1; 
 }
 
@@ -423,13 +423,13 @@ header {
 
 .projectlist-item {
   position: absolute;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
   cursor: pointer;
 }
 
 .projectlist-item a {
   text-decoration: none;
-  font-size: 17px;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
 }
@@ -552,17 +552,17 @@ header {
   }
 
   .projectlist-text h3 {
-    font-size: 18px;
+    font-size: 13px;
     margin-bottom: 4px;
   }
 
   .projectlist-text p {
-    font-size: 14px;
+    font-size: 13px;
     margin: 0;
   }
 
   .projectlist-text a {
-    font-size: 14px;
+    font-size: 13px;
     margin-top: 8px;
   }
 
@@ -590,7 +590,7 @@ header {
   }
 
   .about-content {
-    font-size: 15px;
+    font-size: 13px;
   }
 
   .commission-entry {
@@ -633,16 +633,16 @@ header {
   .about-content {
     padding-left: 0;
     padding-right: 0;
-    font-size: 16px;
+    font-size: 12px;
   }
 
  .projectlist-text h3 {
-    font-size: 16px;
+    font-size: 12px;
   }
 
   .projectlist-text p,
   .projectlist-text a {
-    font-size: 13px;
+    font-size: 12px;
   }
 
   .projectlist-items {
@@ -659,7 +659,7 @@ header {
 
   .site-title {
     margin-right: 20px;
-    font-size: 18px;
+    font-size: 15px;
   }
 
   .nav-item {
@@ -737,7 +737,7 @@ header {
   }
 
     .commission-info {
-    font-size: 12px;
+    font-size: 10px;
     padding: 0 10px;
   }
 

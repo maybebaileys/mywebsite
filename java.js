@@ -147,7 +147,7 @@ document.addEventListener("DOMContentLoaded", () => {
       slides[current].classList.add('active');
     }
 
-    setInterval(showNextSlide, 3000); // Change image every 5 seconds
+    setInterval(showNextSlide, 3000); // Change image every 3.5 seconds
   });
 
 document.addEventListener("DOMContentLoaded", () => {

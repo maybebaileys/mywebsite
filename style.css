@@ -426,7 +426,7 @@ header {
   margin: 0;
   width:100%;
   height:850px;
-  max-width: 900px;
+  max-width: 1200px;
 }
 
 .projectlist-item {
@@ -563,49 +563,6 @@ body::after {
     font-size: 18px;
   }
 
-    .projectlist-items {
-    display: flex;
-    flex-direction: column;
-    gap: 40px;
-    padding: 20px 0;
-  }
-
-  .projectlist-item {
-    position: static;
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    padding-bottom: 24px;
-  }
-
-  .projectlist-text h3 {
-    font-size: 13px;
-    margin-bottom: 4px;
-  }
-
-  .projectlist-text p {
-    font-size: 13px;
-    margin: 0;
-  }
-
-  .projectlist-text a {
-    font-size: 13px;
-    margin-top: 8px;
-  }
-
-  .projectlist-media {
-    display: block;
-    width: 100%;
-  }
-
-  .projectlist-media img {
-    width: 100%;
-    height: auto;
-    aspect-ratio: 16 / 9;
-    object-fit: cover;
-    display: block;
-  }
-
   .nav {
     flex-wrap: wrap;
     gap: 16px;
@@ -663,42 +620,9 @@ body::after {
     font-size: 12px;
   }
 
- .projectlist-text h3 {
-    font-size: 12px;
-  }
-
-  .projectlist-text p,
-  .projectlist-text a {
-    font-size: 12px;
-  }
-
-  .projectlist-items {
-    padding-left: 0;
-    padding-right: 0;
-    gap: 32px;
-  }
-
-  .nav {
-    flex-wrap: wrap;
-    gap: 10px;
-    margin-top: 10px;
-  }
-
   .site-title {
     margin-right: 20px;
     font-size: 15px;
-  }
-
-  .nav-item {
-    font-size: 13px;
-  }
-
-  .nav-item a {
-    font-size: 13px;
-  }
-
-  .container {
-    padding: 0 20px;
   }
 
   .grid {
@@ -787,9 +711,12 @@ body::after {
 @media (max-width: 768px) {
 .mobile-slideshow {
   position: relative;
-  height: 90vh;
-  max-width: 90vw;
-  margin:0 auto;
+  height: 100vh;
+  width:72%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 40%;
+  margin-bottom: auto;
 }
 
 .slide {
@@ -847,7 +774,6 @@ body::after {
   color: #4f57d3; /* <-- updated color */
 }
 
-/* Centered mobile nav */
 .mobile-nav {
   display: none;
   flex-direction: column;
@@ -862,9 +788,6 @@ body::after {
   box-sizing: border-box;
   overflow-y: auto;
   z-index: 1000;
-  justify-content: flex-start;
-  align-items: left;
-  text-align: left;
 }
 
 /* Open state */

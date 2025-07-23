@@ -120,7 +120,7 @@ header {
 
 /* About page full background */
 .about-page {
-  background-image: url('images/aboutbg.gif');
+  background-image: url('/images/aboutbg.gif');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -158,7 +158,6 @@ header {
   margin-right: 0;
 }
 
-
 .about-content a {
   color: #4f57d3;
   text-decoration: none;
@@ -168,11 +167,48 @@ header {
   color: #e1ff00;
 }
 
-/* Projects */
-.project-list {
-  display: flex;
-  flex-direction: column;
-  gap: 60px;
+
+/* Project list nav and each project*/
+
+.projectlist {
+  position: relative; /* to anchor absolute elements inside */
+}
+
+.projectlist-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  width:100%;
+  height:850px;
+  max-width: 1200px;
+}
+
+.projectlist-item {
+  position: absolute;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+
+.projectlist-item a {
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Preview image styling */
+.projectlist-preview {
+  position: fixed; /* fix position relative to viewport */
+  pointer-events: none; /* so it doesn’t block mouse events */
+  top: 0;
+  left: 0;
+  width: 560px;
+  height: 320px;
+  background-size: cover;
+  background-position: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  z-index: 1000;
 }
 
 .project-detail {
@@ -192,6 +228,16 @@ header {
   overflow-y: auto;
   will-change: transform;
   flex-shrink: 0;
+}
+
+.project-text {
+  overflow-y: scroll; /* or auto */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE and Edge */
+}
+
+.project-text::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
 }
 
 .project-text a {
@@ -243,6 +289,7 @@ header {
   opacity: 1;
   transform: translateY(0);
 }
+
 
 /* Commissions */
 .commission-entry {
@@ -307,6 +354,7 @@ header {
   border: none;
   display: block;
 }
+
 
 /* Slideshow core styles */
 [data-animate] {
@@ -385,6 +433,8 @@ header {
 .arrow-icon.flipped {
   transform: scaleX(-1);
 }
+
+
 /* grid */
 .grid { 
   display: grid;
@@ -403,7 +453,6 @@ header {
   max-width: 660px;
 }
 
-/* 动态跨列处理 */
 .grid img:nth-child(1n+1) {
   grid-column: span 1;
   grid-row: span 2; 
@@ -416,50 +465,8 @@ header {
 }
 
 
-.projectlist {
-  position: relative; /* to anchor absolute elements inside */
-}
 
-.projectlist-items {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  width:100%;
-  height:850px;
-  max-width: 1200px;
-}
-
-.projectlist-item {
-  position: absolute;
-  transition: transform 0.5s ease;
-  cursor: pointer;
-}
-
-.projectlist-item a {
-  text-decoration: none;
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-}
-
-/* Preview image styling */
-.projectlist-preview {
-  position: fixed; /* fix position relative to viewport */
-  pointer-events: none; /* so it doesn’t block mouse events */
-  top: 0;
-  left: 0;
-  width: 560px;
-  height: 320px;
-  background-size: cover;
-  background-position: center;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-  z-index: 1000;
-}
-
-/**
- * Site footer
- */
+/**Site footer*/
 
 body::after {
     content: "© XU YUJIE 2025";
@@ -476,6 +483,9 @@ body::after {
     mix-blend-mode: color-dodge;
 }
 
+
+/* Responsive Design */
+
 @media (max-width: 900px) {
   .project-detail {
     flex-direction: column;
@@ -491,6 +501,10 @@ body::after {
   }
 }
 
+/* Only remove outline on mouse click, preserve for keyboard users */
+*:focus:not(:focus-visible) {
+  outline: none;
+}
 
 /* Extra Large Screens (Desktops, ≥1800px) */
 @media (min-width: 1800px) {

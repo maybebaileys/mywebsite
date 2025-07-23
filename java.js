@@ -135,3 +135,28 @@ document.addEventListener("DOMContentLoaded", () => {
     placed.push(position);
   });
 });
+
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const slides = document.querySelectorAll('.mobile-slideshow .slide');
+    let current = 0;
+
+    function showNextSlide() {
+      slides[current].classList.remove('active');
+      current = (current + 1) % slides.length;
+      slides[current].classList.add('active');
+    }
+
+    setInterval(showNextSlide, 3000); // Change image every 5 seconds
+  });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const hamburger = document.querySelector(".hamburger");
+  const mobileNav = document.querySelector(".mobile-nav");
+
+  // Toggle mobile nav
+  hamburger?.addEventListener("click", () => {
+    mobileNav.classList.toggle("open");
+    hamburger.setAttribute("aria-expanded", mobileNav.classList.contains("open"));
+  });
+});

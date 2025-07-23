@@ -8,10 +8,35 @@
 <script src="/java.js" defer></script>
 </head>
 <body>
-  <header>
-    <div class="site-title"><a href="/">XU Yujie</a></div>
-  </header>
+ <header>
+  <div class="site-title"><a href="/">XU Yujie</a></div>
+
+  <!-- Hamburger button -->
+  <button class="hamburger" aria-label="Menu" aria-expanded="false">&#9776;</button>
+
+ <nav class="mobile-nav">
+ <div class="nav-item">
+  <a href="#">projects</a>
+  <ul>
+    <li><a href="/flowingsoilandotherforms/">Flowing Soil And Other Forms</a></li>
+    <li><a href="/elephantinahaystack/">Elephant In A Haystack</a></li>
+    <li><a href="/whitehorse/">White Horse</a></li>
+    <li><a href="/walkingtrailoftheworm/">Walking trail of the worm•o0Ö •*•.¸•*¨*•</a></li>
+    <li><a href="/painting/">Painting</a></li>
+    <li><a href="/drawing/">Drawing</a></li>
+  </ul>
+</div>
+
+  <div class="nav-item"><a href="/commissions/">commissions</a></div>
+  <div class="nav-item">
+    <a href="https://docs.google.com/presentation/..." target="_blank">illustration↗</a>
+  </div>
+  <div class="nav-item"><a href="/about/">about</a></div>
+</nav>
+</header>
+
   <main class="container">
+  <div class="desktop-projectlist">
    <div class="projectlist">
   <ul class="projectlist-items">
     <li class="projectlist-item" data-img="images/hm07.jpg">
@@ -40,7 +65,30 @@
     </li>
   </ul>
   <div class="projectlist-preview" id="projectPreview"></div>
-  </div>
+  </div></div>
   </main>
+  <!-- Mobile slideshow & nav (only shows on small screens) -->
+<div class="mobile-slideshow-section">
+<div class="mobile-slideshow">
+  <div class="slide active">
+    <img src="/images/drawing02.jpeg" alt="Slide 1" />
+  </div>
+  <div class="slide">
+    <img src="/images/eiahstill3.jpg" alt="Slide 2" />
+  </div>
+  <div class="slide">
+    <img src="/images/wh02.png" alt="Slide 3" />
+  </div>
+    <div class="slide">
+    <img src="/images/f_still03.jpg" alt="Slide 4" />
+  </div>
+    <div class="slide">
+    <img src="/images/hm06.jpg" alt="Slide 5" />
+  </div>
+    <div class="slide">
+    <img src="/images/workshop_poster.jpeg" alt="Slide 3" />
+  </div>
+</div>
+</div>
 </body>
 </html>

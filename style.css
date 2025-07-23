@@ -28,7 +28,7 @@ body {
 }
 
 .smaller {
-  font-size: 12px;
+  font-size: 10px;
 }
 
 a:link,
@@ -75,7 +75,7 @@ header {
 .nav-item {
   position: relative;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 20px;
   line-height: 1.2em;
 }
 
@@ -776,5 +776,126 @@ body::after {
     width: 100%;
     min-height: 360px;
     aspect-ratio: 16 / 9;
+  }
+}
+
+/* Hide slideshow on larger screens */
+.mobile-slideshow-section {
+  display: none;
+}
+
+@media (max-width: 768px) {
+.mobile-slideshow {
+  position: relative;
+  height: 90vh;
+  max-width: 90vw;
+  margin:0 auto;
+}
+
+.slide {
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  display: none; /* hide all by default */
+}
+
+.slide.active {
+  display: block; /* only show the active one */
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+  .mobile-slideshow img.active {
+    opacity: 1;
+    z-index: 1;
+  }
+}
+
+/* Default: show desktop project list, hide mobile slideshow */
+.desktop-projectlist {
+  display: block;
+}
+.mobile-slideshow-section {
+  display: none;
+}
+
+/* On mobile screens: hide desktop, show mobile */
+@media screen and (max-width: 768px) {
+  .desktop-projectlist {
+    display: none;
+  }
+  .mobile-slideshow-section {
+    display: block;
+  }
+}
+
+/* Default hamburger hidden */
+.hamburger {
+  display: none;
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  z-index: 1001;
+  color: #4f57d3; /* <-- updated color */
+}
+
+/* Centered mobile nav */
+.mobile-nav {
+  display: none;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(255, 255, 255, 0.5);
+  backdrop-filter: blur(6px);
+  padding: 80px 20px 20px;
+  box-sizing: border-box;
+  overflow-y: auto;
+  z-index: 1000;
+  justify-content: flex-start;
+  align-items: left;
+  text-align: left;
+}
+
+/* Open state */
+.mobile-nav.open {
+  display: flex;
+}
+
+.mobile-nav li a {
+  font-size: 15px;
+}
+
+/* NAV ITEM general */
+.mobile-nav .nav-item {
+  width: 100%;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.mobile-nav a {
+  font-size: 18px;
+  color: #4f57d3;
+  text-decoration: none;
+}
+
+/* Responsive toggle */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+
+  nav:not(.mobile-nav) {
+    display: none;
   }
 }

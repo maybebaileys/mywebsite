@@ -31,17 +31,14 @@ body {
   font-size: 10px;
 }
 
-a:link,
-a:visited,
-a:hover,
-a:active {
-  color: #4f57d3;
+a, a:link, a:visited {
+  color: #4f57d3;  /* link normal color */
   text-decoration: none;
 }
 
-a:hover,
-a:active {
-  color: #e1ff00;
+a:hover, a:active {
+  color: #e1ff00;  /* link hover/active color */
+  font-style: italic; /* link hover/active style */
 }
 
 /* Header navigation */
@@ -80,18 +77,7 @@ header {
 }
 
 .nav-item a {
-  text-decoration: none;
-  color: #4f57d3;
   font-size: 20px;
-}
-
-.nav-item a:hover,
-.nav-item a:active {
-  color: #e1ff00;
-}
-
-.nav-item a.active {
-  color: #e1ff00;
 }
 
 .dropdown {
@@ -115,7 +101,6 @@ header {
 
 .nav-item:hover .dropdown {
   display: flex;
-  color: #e1ff00;
 }
 
 /* About page full background */
@@ -150,26 +135,12 @@ header {
   max-width: 800px;
   position: relative;
   z-index: 2;
-
-  /* Remove extra padding or margin-left/right if you had it before */
-  padding-left: 0;
-  padding-right: 0;
-  margin-left: 0;
-  margin-right: 0;
-}
-
-.about-content a {
-  color: #4f57d3;
-  text-decoration: none;
-}
-
-.about-content a:hover {
-  color: #e1ff00;
+  padding: 0;
+  margin: 0;
 }
 
 
-/* Project list nav and each project*/
-
+/*Project list*/
 .projectlist {
   position: relative; /* to anchor absolute elements inside */
 }
@@ -190,7 +161,6 @@ header {
 }
 
 .projectlist-item a {
-  text-decoration: none;
   font-size: 15px;
   font-weight: 500;
   cursor: pointer;
@@ -202,7 +172,7 @@ header {
   pointer-events: none; /* so it doesn’t block mouse events */
   top: 0;
   left: 0;
-  width: 560px;
+  width: 590px;
   height: 320px;
   background-size: cover;
   background-position: center;
@@ -225,15 +195,11 @@ header {
   top: 100px;
   align-self: flex-start;
   max-height: calc(100vh - 120px);
-  overflow-y: auto;
-  will-change: transform;
-  flex-shrink: 0;
-}
-
-.project-text {
   overflow-y: scroll; /* or auto */
   scrollbar-width: none; /* Firefox */
   -ms-overflow-style: none;  /* IE and Edge */
+  will-change: transform;
+  flex-shrink: 0;
 }
 
 .project-text::-webkit-scrollbar {
@@ -241,13 +207,7 @@ header {
 }
 
 .project-text a {
-  text-decoration: none;
   overflow-wrap: break-word;
-}
-
-.project-text a:hover,
-.project-text a:active {
-  color: #e1ff00;
 }
 
 .project-media {
@@ -303,17 +263,10 @@ header {
 .commission-info {
   flex: 1;
   font-size: 14px;
-  color: #4f57d3;
 }
 
 .commission-info a {
-  text-decoration: none;
   overflow-wrap: break-word;
-}
-
-.commission-info a:hover,
-.commission-info a:active {
-  color: #e1ff00;
 }
 
 .commission-media {
@@ -415,21 +368,14 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: white; /* base color for blend mode */
   mix-blend-mode: difference;
-  text-decoration: none;
 }
 
-.arrow-icon {
-  width: 24px;
-  height: 24px;
+.arrow-icon polyline{
   stroke: currentColor;
-  mix-blend-mode: difference;
-  stroke-width: 2;
-  stroke-linecap: round;
-  stroke-linejoin: round;
+  stroke-width: 1.5;
 }
-
 .arrow-icon.flipped {
   transform: scaleX(-1);
 }
@@ -501,10 +447,6 @@ body::after {
   }
 }
 
-/* Only remove outline on mouse click, preserve for keyboard users */
-*:focus:not(:focus-visible) {
-  outline: none;
-}
 
 /* Extra Large Screens (Desktops, ≥1800px) */
 @media (min-width: 1800px) {
@@ -729,7 +671,6 @@ body::after {
   width:72%;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 40%;
   margin-bottom: auto;
 }
 
@@ -759,9 +700,6 @@ body::after {
 /* Default: show desktop project list, hide mobile slideshow */
 .desktop-projectlist {
   display: block;
-}
-.mobile-slideshow-section {
-  display: none;
 }
 
 /* On mobile screens: hide desktop, show mobile */
@@ -802,6 +740,7 @@ body::after {
   box-sizing: border-box;
   overflow-y: auto;
   z-index: 1000;
+  -webkit-tap-highlight-color: transparent;
 }
 
 /* Open state */
@@ -809,9 +748,13 @@ body::after {
   display: flex;
 }
 
+ul {
+  list-style-type: none;
+}
+
 .mobile-nav li a {
   font-size: 14px;
-  overflow: break-word;;
+  overflow: break-word;
 }
 
 /* NAV ITEM general */
@@ -824,8 +767,6 @@ body::after {
 
 .mobile-nav a {
   font-size: 18px;
-  color: #4f57d3;
-  text-decoration: none;
 }
 
 /* Responsive toggle */

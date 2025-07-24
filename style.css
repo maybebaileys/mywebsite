@@ -222,7 +222,7 @@ header {
 .project-media .video-wrapper,
 .project-media .slideshow {
   width: 100%;
-  max-width: 900px;
+  max-width: 1200px;
   margin-bottom: 20px;
 }
 
@@ -341,6 +341,7 @@ header {
   position: relative;
   opacity: 0;
   transition: opacity 0.8s ease;
+  z-index: 0;
 }
 
 .slideshow_container img.active {

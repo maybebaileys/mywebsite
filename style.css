@@ -363,18 +363,26 @@ header {
 .slideshow_navigation a {
   pointer-events: auto;
   padding: 5px;
-  width: 36px;
-  height: 36px;
+  width: 20px;
+  height: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   color: white; /* base color for blend mode */
   mix-blend-mode: difference;
+  background-color: rgba(186, 186, 186, 0.196); /* translucent dark background */
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.slideshow_navigation a:hover {
+  background-color: #e1ff004f;; /* darker on hover */
 }
 
 .arrow-icon polyline{
   stroke: currentColor;
   stroke-width: 1.5;
+  transition: color 0.3s ease;
 }
 .arrow-icon.flipped {
   transform: scaleX(-1);

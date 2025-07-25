@@ -672,36 +672,37 @@ body::after {
 }
 
 @media (max-width: 768px) {
-.mobile-slideshow {
-  position: relative；
-  height:100vh;
-  width:72%;
-  padding: 30px 20px;
-  margin: 0 auto;
-}
+  .mobile-slideshow {
+    position: relative;
+    height: 100vh;
+    width: 72%;
+    padding: 30px 20px;
+    margin: 0 auto;
+  }
 
-.slide {
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  display: none; /* hide all by default */
-}
+  .slide {
+    aspect-ratio: 3 / 4;
+    overflow: hidden;
+    display: none; /* hide all by default */
+  }
 
-.slide.active {
-  display: block; /* only show the active one */
-}
+  .slide.active {
+    display: block; /* only show the active one */
+  }
 
-.slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-}
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
 
   .mobile-slideshow img.active {
     opacity: 1;
     z-index: 1;
   }
 }
+
 
 /* Default: show desktop project list, hide mobile slideshow */
 .desktop-projectlist {

@@ -47,23 +47,26 @@ header {
   top: 0;
   width: 100%;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
   align-items: center;
   padding: 20px 100px;
+  flex-wrap: wrap; /* allow wrapping if needed */
+  gap: 10px; /* add spacing when wrapping occurs */
   z-index: 999;
   box-sizing: border-box;
 }
 
 .site-title {
-  margin-right: 60px;
+  margin-right: 20px;
   font-weight: bold;
   font-size: 18px;
   white-space: nowrap;
+  flex-shrink: 0; /* prevent shrinking too small */
 }
 
 .nav {
   display: flex;
-  gap: 50px;
+  gap: 40px;
   align-items: center;
   flex-wrap: nowrap;
   white-space: nowrap;
@@ -101,6 +104,9 @@ header {
 
 /* About page full background */
 .about-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-image: url('/images/aboutbg.gif');
   background-size: cover;
   background-position: center;
@@ -110,6 +116,7 @@ header {
   position: relative;
   animation: fadeInBackground 0.6s ease-in-out forwards;
   opacity: 0;
+  box-sizing: border-box;
 }
 
 @keyframes fadeInBackground {
@@ -129,10 +136,11 @@ header {
 /* About content */
 .about-content {
   max-width: 800px;
+  width: 100%;
   position: relative;
   z-index: 2;
-  padding: 0;
-  margin: 0;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 
@@ -218,7 +226,7 @@ header {
 .project-media .video-wrapper,
 .project-media .slideshow {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1800px;
   margin-bottom: 20px;
 }
 
@@ -245,7 +253,6 @@ header {
   opacity: 1;
   transform: translateY(0);
 }
-
 
 /* Commissions */
 .commission-entry {
@@ -391,7 +398,7 @@ header {
 /* grid */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   grid-gap: 50px;
   align-items: center;
   justify-content: center;

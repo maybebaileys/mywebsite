@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Frank+Ruhl+Libre:wght@300..900&family=Ledger&family=Noto+Serif+SC:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@200..900&display=swap');
 
 /* File: style.css */
 
@@ -7,8 +8,8 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Ledger", 'Noto Serif SC', "Times New Roman", serif;
-  font-size: 14px;
+  font-family: "Old Standard TT", 'Noto Serif SC', serif;
+  font-size: 15px;
   font-weight: 400;
   color: #4f57d3;
   line-height: 1em;
@@ -28,7 +29,7 @@ body {
 }
 
 .smaller {
-  font-size: 10px;
+  font-size: 12px;
 }
 
 a, a:link, a:visited {
@@ -58,10 +59,10 @@ header {
 
 .site-title {
   margin-right: 20px;
-  font-weight: bold;
   font-size: 18px;
   white-space: nowrap;
   flex-shrink: 0; /* prevent shrinking too small */
+  background-color: white;
 }
 
 .nav {
@@ -77,6 +78,7 @@ header {
   cursor: pointer;
   font-size: 18px;
   line-height: 1.2em;
+  background-color: white;
 }
 
 .dropdown {
@@ -496,11 +498,11 @@ body::after {
     flex-direction: column;
     align-items: center;
     text-align: center;
+    font-size: 13px;
   }
 
   .commission-info {
     width: 100%;
-    font-size: 13px;
     margin-bottom: 20px;
     padding: 0 10px;
   }
@@ -568,6 +570,7 @@ body::after {
   }
 
   .commission-media {
+    grid-template-columns: 1fr;
     min-height: 200px;
   }
 

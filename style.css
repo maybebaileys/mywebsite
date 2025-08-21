@@ -82,7 +82,7 @@ header {
 
 .nav a {
   background-color: white;
-  width: max-content; /* ✨ auto-fit to content width */
+  width: max-content;
   white-space: nowrap; 
 }
 

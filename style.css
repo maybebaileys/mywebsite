@@ -78,7 +78,12 @@ header {
   cursor: pointer;
   font-size: 18px;
   line-height: 1.2em;
+}
+
+.nav a {
   background-color: white;
+  width: max-content; /* ✨ auto-fit to content width */
+  white-space: nowrap; 
 }
 
 .dropdown {
@@ -531,6 +536,7 @@ body::after {
   .container {
     padding: 0 20px; /* smaller padding on mobile */
   }
+
   .about-content {
     padding-left: 0;
     padding-right: 0;

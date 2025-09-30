@@ -1,17 +1,28 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ===== Scroll Fade-In =====
-  const observer = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-        }
-      });
-    },
-    { threshold: 0.1 }
-  );
+  // ===== Combined Observer (Fade-In + Lazy Load) =====
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
 
-  document.querySelectorAll(".project-media, .commission-media, [data-animate]").forEach(el => {
+        // Fade-in effect
+        el.classList.add("visible");
+
+        // Lazy load images
+        if (el.tagName === "IMG" && el.dataset.src) {
+          el.src = el.dataset.src;
+          el.classList.remove("lazy");
+        }
+
+        observer.unobserve(el);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  // Observe all animated elements + lazy images
+  document.querySelectorAll(
+    ".project-media, .commission-media, [data-animate], img.lazy"
+  ).forEach(el => {
     observer.observe(el);
   });
 

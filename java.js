@@ -1,31 +1,20 @@
 document.addEventListener("DOMContentLoaded", () => {
-  // ===== Combined Observer (Fade-In + Lazy Load) =====
-  const observer = new IntersectionObserver((entries, observer) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-
-        // Fade-in effect
-        el.classList.add("visible");
-
-        // Lazy load images
-        if (el.tagName === "IMG" && el.dataset.src) {
-          el.src = el.dataset.src;
-          el.classList.remove("lazy");
+  // ===== Scroll Fade-In =====
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
         }
+      });
+    },
+    { threshold: 0.1 }
+  );
 
-        observer.unobserve(el);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  // Observe all animated elements + lazy images
-  document.querySelectorAll(
-    ".project-media, .commission-media, [data-animate], img.lazy"
-  ).forEach(el => {
+  document.querySelectorAll(".project-media, .commission-media, [data-animate]").forEach(el => {
     observer.observe(el);
   });
-
+  
   // ===== Floating Preview on Hover =====
   const previewBox = document.getElementById("projectPreview");
   const items = document.querySelectorAll(".projectlist-item");

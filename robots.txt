@@ -3,9 +3,8 @@ Allow: /
 
 Sitemap: https://xuyujie.cc/sitemap.xml
 
-# Content signals (copyright rights reserved)
+# Content signals
 content-signals:
   search: yes
   ai-input: no
   ai-train: no
-  

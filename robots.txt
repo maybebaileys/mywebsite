@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://xuyujie.cc/sitemap.xml
+
+# Content signals (copyright rights reserved)
+content-signals:
+  search: yes
+  ai-input: no
+  ai-train: no

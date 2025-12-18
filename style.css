@@ -150,6 +150,34 @@ header {
   box-sizing: border-box;
 }
 
+/* news */
+
+.news-section {
+  border-top: 1px solid #373bba;
+  margin: 80px auto 10px;
+  max-width: 800px;
+  font-size: 14px;
+}
+
+/* Remove default triangle */
+.news-section summary {
+  list-style: none;
+  cursor: pointer;
+  text-transform: lowercase;
+}
+
+.news-section summary::-webkit-details-marker {
+  display: none;
+}
+
+.news-content {
+  margin-top: 5px;
+}
+
+.news-content p {
+  margin-bottom: 5px;
+}
+
 
 /*Project list*/
 .projectlist {

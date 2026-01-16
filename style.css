@@ -8,11 +8,12 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: "Old Standard TT", 'Noto Serif SC', serif;
+  font-family: 'Old Standard TT', 'Noto Serif SC', serif;
   font-size: 15px;
   font-weight: 400;
   color: #4f57d3;
-  line-height: 1em;
+  letter-spacing: 0.02em;
+  line-height: 1.2em;
   text-decoration: none;
 }
 
@@ -408,7 +409,7 @@ header {
 /**Site footer*/
 
 body::after {
-    content: "© XU YUJIE 2025";
+    content: "© 2026 xu yujie all rights reserved.";
     position: fixed; 
     bottom: 0; 
     left: 50%;

@@ -20,7 +20,7 @@ body {
 .container {
   max-width: 1800px;
   margin: 120px auto 40px;
-  padding: 0 60px; 
+  padding: 0 15px; 
   box-sizing: border-box;
 }
 
@@ -51,7 +51,7 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 100px;
+  padding: 15px 15px;
   flex-wrap: wrap; /* allow wrapping if needed */
   gap: 10px; /* add spacing when wrapping occurs */
   z-index: 999;
@@ -178,6 +178,26 @@ header {
   margin-bottom: 5px;
 }
 
+/* Base style for the summary */
+.news-section summary {
+  list-style: none;
+  cursor: pointer;
+  text-transform: lowercase;
+  color: #4f57d3;
+  outline: none; 
+}
+
+/* The "Hook" Effect on Hover */
+.news-section summary:hover {
+  color: #e1ff00;  
+  font-style: italic;
+}
+
+/* Optional: Keep the effect when the section is open */
+.news-section details[open] summary {
+ color: #e1ff00; 
+ font-style: italic; 
+}
 
 /*Project list*/
 .projectlist {
@@ -190,7 +210,7 @@ header {
   margin: 0;
   width:100%;
   height:850px;
-  max-width: 1200px;
+  max-width: 1800px;
 }
 
 .projectlist-item {
@@ -323,6 +343,20 @@ header {
   padding: 10px 0;
   align-items: center;  
   justify-items: start; 
+}
+
+/* Ensure the Instagram embed doesn't overflow its container */
+.instagram-embed {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.instagram-embed blockquote {
+  min-width: 326px !important; /* Instagram's minimum width */
+  width: 100% !important;
+  max-width: 540px !important; /* Prevents it from getting too massive */
+  margin: 0 auto !important;
 }
 
 /* Base item */

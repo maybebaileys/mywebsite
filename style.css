@@ -18,7 +18,7 @@ body {
 }
 
 .container {
-  max-width: 1800px;
+  max-width: 100%;
   margin: 120px auto 40px;
   padding: 0 15px; 
   box-sizing: border-box;
@@ -152,6 +152,21 @@ header {
 }
 
 /* news */
+.inline-arrow {
+  display: inline-block;
+  vertical-align: middle; /* Keeps it on the text line */
+  width: 15px;            /* Set this to match your font-size (15px) */
+  height: 15px;
+  margin-left: 2px;      /* Space between the word 'news' and the arrow */
+  color: inherit;
+}
+
+/* This ensures the arrow doesn't get "blocked" by the summary's default styling */
+summary {
+  display: flex;
+  align-items: center;
+  list-style: none;
+}
 
 .news-section {
   border-top: 1px solid #373bba;
@@ -210,7 +225,6 @@ header {
   margin: 0;
   width:100%;
   height:850px;
-  max-width: 1800px;
 }
 
 .projectlist-item {
@@ -312,12 +326,11 @@ header {
 /* Commissions */
 .commission-entry {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr; /* left | center | right */
-  gap: 20px;
-  border-top: 1px solid#4f57d3;
-  padding-top: 1rem;
-  margin-top: 1rem;
-  align-items: start;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 10px;
+  border-top: 1px solid #4f57d3;
+  padding: 10px 0;
+  width: 100%;
 }
 
 .commission-entry .col {
@@ -338,11 +351,10 @@ header {
 
 .commission-media {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
-  gap: 10px;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); 
+  gap: 5px;
+  width: 100%;
   padding: 10px 0;
-  align-items: center;  
-  justify-items: start; 
 }
 
 /* Ensure the Instagram embed doesn't overflow its container */
@@ -353,9 +365,9 @@ header {
 }
 
 .instagram-embed blockquote {
-  min-width: 326px !important; /* Instagram's minimum width */
+  min-width: 0 !important; /* Changed from 540px */
   width: 100% !important;
-  max-width: 540px !important; /* Prevents it from getting too massive */
+  max-width: 600px !important;
   margin: 0 auto !important;
 }
 
@@ -723,6 +735,10 @@ body::after {
   .mobile-slideshow img.active {
     opacity: 1;
     z-index: 1;
+  }
+
+  .commission-media {
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
   }
 }
 

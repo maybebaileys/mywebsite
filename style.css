@@ -143,11 +143,11 @@ header {
 
 /* About content */
 .about-content {
- max-width: 800px;
+ max-width: 850px;
  width: 100%;
  position: relative;
  z-index: 2;
- padding: 20px;
+ padding: 5px;
  box-sizing: border-box;
 }
 
@@ -163,10 +163,8 @@ header {
  
  /* This prevents the "huge" stretching on mobile */
  flex-shrink: 0; 
- 
  margin-left: 6px;
- color: inherit;
- line-height: 1; /* Prevents the SVG from inheriting tall line-heights */
+ line-height: 1; 
 }
 
 /* This ensures the arrow doesn't get "blocked" by the summary's default styling */
@@ -179,7 +177,7 @@ summary {
 .news-section {
  border-top: 1px solid #373bba;
  margin: 80px auto 30px;
- max-width: 800px;
+ max-width: 850px;
 }
 
 /* Remove default triangle */
@@ -271,12 +269,12 @@ font-style: italic;
 }
 
 .project-text {
- flex: 3;
+ flex: 2;
  position: sticky;
  top: 100px;
  align-self: flex-start;
  max-height: calc(100vh - 120px);
- overflow-y: scroll; /* or auto */
+ overflow-y: auto; /* or auto */
  scrollbar-width: none; /* Firefox */
  -ms-overflow-style: none; /* IE and Edge */
  will-change: transform;
@@ -292,7 +290,7 @@ font-style: italic;
 }
 
 .project-media {
- flex: 6;
+ flex: 4;
  display: flex;
  flex-direction: column;
  align-items: flex-start; 
@@ -303,12 +301,12 @@ font-style: italic;
 .project-media .video-wrapper,
 .project-media .slideshow {
  width: 100%;
- max-width: 1800px;
- margin-bottom: 20px;
+ margin-bottom: 15px;
 }
 
 .project-media iframe {
  aspect-ratio: 16 / 9;
+ max-width: auto;
  width: 100%;
  border: none;
  display: block;
@@ -358,29 +356,19 @@ font-style: italic;
 } 
 
 .commission-media {
- display: grid;
- grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); 
- gap: 5px;
- width: 100%;
- padding: 10px 0;
-}
-
-/* Ensure the Instagram embed doesn't overflow its container */
-.instagram-embed {
- display: flex;
- justify-content: center;
- width: 100%;
-}
-
-.instagram-embed blockquote {
- min-width: 0 !important; /* Changed from 540px */
- width: 100% !important;
- max-width: 600px !important;
- margin: 0 auto !important;
+  display: grid;
+  /* 4 columns on Desktop - predictable and easy to manage */
+  grid-template-columns: repeat(4, 1fr); 
+  /* IMPORTANT: 'row' (default) ensures 1, 2, 3 order. NEVER use 'dense' here. */
+  grid-auto-flow: row; 
+  gap: 5px;
+  width: 100%;
+  padding: 10px 0;
 }
 
 /* Base item */
 .media-item {
+ grid-column: span 1;
  width: 100%;
  height: auto;
  display: flex;
@@ -404,9 +392,9 @@ font-style: italic;
  border: 0;
 }
 
-/* 🔑 Optional modifiers for curated layout */
 .media-item.small {
- grid-column: span 1/2; 
+ grid-column: span 1; 
+ padding: 28px;
 }
 
 .media-item.wide {
@@ -415,12 +403,24 @@ font-style: italic;
 .media-item.full {
  grid-column: 1 / -1; /* spans full row */
 }
+/* Ensure the Instagram embed doesn't overflow its container */
+.instagram-embed {
+ display: flex;
+ justify-content: center;
+ width: 100%;
+}
 
+.instagram-embed blockquote {
+ min-width: 0 !important; /* Changed from 540px */
+ width: 100% !important;
+ max-width: 600px !important;
+ margin: 0 auto !important;
+}
 /* grid */
 .grid {
  display: grid;
- grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
- grid-gap: 50px;
+ grid-template-columns: repeat(auto-fit, minmax(580px, 1fr));
+ grid-gap: 15px;
  align-items: center;
  justify-content: center;
 }
@@ -438,7 +438,7 @@ font-style: italic;
  object-fit: contain;
  transition: transform 0.5s ease;
  min-width: 250px;
- max-width: 1200px;
+ max-width: auto;
 }
 
 .grid figcaption {
@@ -499,7 +499,7 @@ body::after {
 /* Medium Screens (Tablets, 900px–1200px) */
 @media (max-width: 1200px) {
  .container {
-  padding: 0 40px;
+  padding: 0 20px;
  }
 
  .grid {
@@ -509,18 +509,12 @@ body::after {
  .commission-entry {
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  text-align: left;
  }
 
  .commission-info {
   width: 100%;
-  font-size: 13px;
   margin-bottom: 20px;
- }
-
- .commission-media {
-  width: 100%;
-  justify-content: center;
  }
 
  .commission-media img,
@@ -533,7 +527,7 @@ body::after {
 @media (max-width: 1024px) {
  .grid {
   grid-template-columns: 1fr;
-  grid-gap: 30px;
+  grid-gap: 15px;
  }
 
  .project-detail {
@@ -545,7 +539,7 @@ body::after {
   width: 100%;
  }
 
-  header {
+ .header {
   padding: 16px 25px;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -565,14 +559,10 @@ body::after {
   font-size: 18px;
  }
 
- .about-content {
-  font-size: 13px;
- }
-
  .commission-entry {
   flex-direction: column;
   align-items: center;
-  text-align: center;
+  text-align: left;
   font-size: 13px;
  }
 
@@ -580,18 +570,6 @@ body::after {
   width: 100%;
   margin-bottom: 20px;
   padding: 0 10px;
- }
-
- .commission-media {
-  width: 100%;
-  justify-content: center;
-  min-height: 240px;
- }
-
- .commission-media iframe {
-  width: 100%;
-  height: auto;
-  aspect-ratio: 16 / 9;
  }
 }
 
@@ -604,13 +582,12 @@ body::after {
  }
 
  .container {
-  padding: 0 20px; /* smaller padding on mobile */
+  padding: 0 10px; /* smaller padding on mobile */
  }
 
  .about-content {
   padding-left: 0;
   padding-right: 0;
-  font-size: 12px;
  }
 
  .site-title {
@@ -620,7 +597,7 @@ body::after {
 
  .grid {
   grid-template-columns: 1fr;
-  grid-gap: 20px;
+  grid-gap: 10px;
  }
 
  .grid img {
@@ -646,10 +623,11 @@ body::after {
  }
 
  .commission-media {
-  grid-template-columns: 1fr;
-  display: block; /* Safer for older phones to prevent disappearing items */
-  width: 100%;
- }
+    grid-template-columns: 1fr;
+  }
+  .media-item, .media-item.wide, .media-item.full {
+    grid-column: span 1;
+  }
 
  .commission-media iframe {
   width: 100%;
@@ -657,19 +635,6 @@ body::after {
   aspect-ratio: 16 / 9;
  }
 
- /* 2. Reset the "wide" and "small" modifiers so they don't break the layout */
- .media-item.wide, 
- .media-item.small,
- .media-item.full {
-  grid-column: auto !important;
-  width: 100% !important;
- }
-
- /* 3. KILL the minimum width on Instagram */
- .instagram-embed blockquote {
-  min-width: 100% !important; /* Forces it to shrink to phone width */
-  width: 100% !important;
- }
 }
 
 /* Smallest Screens (≤480px) */
@@ -777,7 +742,7 @@ body::after {
  top: 8px;
  right: 12px;
  z-index: 1001;
- color: #4f57d3; /* <-- updated color */
+ color: #4f57d3;
 }
 
 .mobile-nav {
@@ -808,7 +773,7 @@ ul {
 }
 
 .mobile-nav li a {
- font-size: 14px;
+ font-size: 15px;
  overflow: break-word;
 }
 

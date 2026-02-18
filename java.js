@@ -21,13 +21,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   if (previewBox) {
     items.forEach(item => {
-      item.addEventListener("mouseenter", e => {
-        const img = item.getAttribute("data-img");
-        if (img) {
-          previewBox.style.backgroundImage = `url(${img})`;
-          previewBox.style.opacity = 1;
-        }
-      });
+  item.addEventListener("mouseenter", e => {
+    const img = item.getAttribute("data-img");
+    const customWidth = item.getAttribute("data-width") || "540px"; // Default width
+    const customHeight = item.getAttribute("data-height") || "320px"; // Default height
+
+    if (img) {
+      previewBox.style.backgroundImage = `url(${img})`;
+      previewBox.style.width = customWidth;   /* Apply custom width */
+      previewBox.style.height = customHeight; /* Apply custom height */
+      previewBox.style.opacity = 1;
+    }
+  });
+  // ... rest of your mousemove and mouseleave code
 
       item.addEventListener("mousemove", e => {
         const offsetX = 20;
@@ -123,3 +129,89 @@ document.addEventListener("DOMContentLoaded", () => {
     hamburger.setAttribute("aria-expanded", mobileNav.classList.contains("open"));
   });
 });
+
+// lightbox
+const setupLightbox = () => {
+  const lightbox = document.getElementById("lightbox");
+  if (!lightbox) return;
+
+  const lbImg = document.getElementById("lb-img");
+  const lbCaption = document.getElementById("lb-caption");
+  
+  // This selector finds images in both your standard grid and commission grid
+  const images = Array.from(document.querySelectorAll(".grid img, .commission-media img"));
+  let currentIndex = 0;
+
+  images.forEach((img, index) => {
+    img.style.cursor = "pointer";
+    img.addEventListener("click", (e) => {
+      e.stopPropagation();
+      currentIndex = index;
+      updateLightbox();
+      lightbox.style.display = "flex";
+      document.body.style.overflow = "hidden"; // Stop page scroll when open
+    });
+  });
+
+  function updateLightbox() {
+    const currentImg = images[currentIndex];
+    lbImg.src = currentImg.src;
+    
+    // Check for figcaption (Drawing/Painting) or Alt text (Commissions)
+    const captionText = currentImg.parentElement.querySelector("figcaption")?.innerText 
+                        || currentImg.alt 
+                        || "";
+    lbCaption.innerText = captionText;
+  }
+
+  const closeLightbox = () => {
+    lightbox.style.display = "none";
+    document.body.style.overflow = "auto";
+  };
+
+  document.getElementById("lb-next").onclick = (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex + 1) % images.length;
+    updateLightbox();
+  };
+
+  document.getElementById("lb-prev").onclick = (e) => {
+    e.stopPropagation();
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    updateLightbox();
+  };
+
+  lightbox.onclick = closeLightbox;
+  document.getElementById("lb-close").onclick = closeLightbox;
+
+  // Keyboard support
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.style.display === "flex") {
+      if (e.key === "ArrowRight") document.getElementById("lb-next").click();
+      if (e.key === "ArrowLeft") document.getElementById("lb-prev").click();
+      if (e.key === "Escape") closeLightbox();
+    }
+  });
+};
+
+setupLightbox();
+
+// norightclick
+const protectImages = () => {
+  // Selects images in your main grids and the lightbox
+  const siteImages = document.querySelectorAll('.grid img, .commission-media img, #lb-img');
+
+  siteImages.forEach(img => {
+    // Prevent Right-Click menu
+    img.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+    });
+
+    // Prevent dragging the image to the desktop
+    img.addEventListener('dragstart', (e) => {
+      e.preventDefault();
+    });
+  });
+};
+
+protectImages();

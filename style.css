@@ -571,14 +571,21 @@ body::after {
  }
 }
 
-/* Extra Small Screens (Phones, <600px) */
-@media (max-width: 600px) {
+/* Extra Small Screens (Phones, <768px) */
+@media (max-width: 768px) {
  .header {
   padding: 16px 20px;
   flex-wrap: wrap;
   justify-content: space-between;
  }
 
+.lightbox-prev, .lightbox-next { 
+  display: none; 
+ } 
+
+.grid img, .commission-media img {
+  cursor: default !important; /* Removes the hand icon on mobile */
+ }
  .container {
   padding: 0 10px; /* smaller padding on mobile */
  }
@@ -852,7 +859,3 @@ display: none;
 .lightbox-close { top: 30px; right: 30px; font-size: 40px; font-weight: 100; }
 .lightbox-prev { left: 40px; top: 50%; transform: translateY(-50%); }
 .lightbox-next { right: 40px; top: 50%; transform: translateY(-50%); }
-
-@media (max-width: 768px) {
-  .lightbox-prev, .lightbox-next { display: none; } /* Hide arrows on mobile for cleaner look */
-}

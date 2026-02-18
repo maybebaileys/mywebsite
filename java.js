@@ -120,14 +120,22 @@ document.addEventListener("DOMContentLoaded", () => {
     setInterval(showNextSlide, 3000);
   }
 
-  // ===== Hamburger Nav =====
-  const hamburger = document.querySelector(".hamburger");
-  const mobileNav = document.querySelector(".mobile-nav");
+// ===== Hamburger Nav =====
+const hamburger = document.querySelector(".hamburger");
+const mobileNav = document.querySelector(".mobile-nav");
 
-  hamburger?.addEventListener("click", () => {
-    mobileNav.classList.toggle("open");
-    hamburger.setAttribute("aria-expanded", mobileNav.classList.contains("open"));
-  });
+hamburger?.addEventListener("click", () => {
+  const isOpen = mobileNav.classList.toggle("open");
+  
+  // Toggle the icon between hamburger and X
+  if (isOpen) {
+    hamburger.innerHTML = "&times;"; // The thin "×" sign
+  } else {
+    hamburger.innerHTML = "&#9776;"; // The "☰" sign
+  }
+
+  hamburger.setAttribute("aria-expanded", isOpen);
+});
 });
 
 // lightbox
@@ -143,13 +151,19 @@ const setupLightbox = () => {
   let currentIndex = 0;
 
   images.forEach((img, index) => {
-    img.style.cursor = "pointer";
-    img.addEventListener("click", (e) => {
-      e.stopPropagation();
-      currentIndex = index;
-      updateLightbox();
-      lightbox.style.display = "flex";
-      document.body.style.overflow = "hidden"; // Stop page scroll when open
+   img.style.cursor = "pointer";
+   img.addEventListener("click", (e) => {
+      // 2. ADD THIS CHECK: Only run if screen is wider than 768px
+      if (window.innerWidth > 768) {
+        e.stopPropagation();
+        currentIndex = index;
+        updateLightbox();
+        lightbox.style.display = "flex";
+        document.body.style.overflow = "hidden";
+      } else {
+        // On mobile, this 'return' stops the lightbox from opening
+        return;
+      }
     });
   });
 

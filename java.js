@@ -129,9 +129,9 @@ hamburger?.addEventListener("click", () => {
   
   // Toggle the icon between hamburger and X
   if (isOpen) {
-    hamburger.innerHTML = "&times;"; // The thin "×" sign
+    hamburger.innerHTML = '<svg viewBox="0 0 40 40" width="28" height="28"><line x1="5" y1="5" x2="35" y2="35" stroke="currentColor" stroke-width="1.5"/><line x1="35" y1="5" x2="5" y2="35" stroke="currentColor" stroke-width="1.5"/></svg>';
   } else {
-    hamburger.innerHTML = "&#9776;"; // The "☰" sign
+    hamburger.innerHTML = "&#9776;"; 
   }
 
   hamburger.setAttribute("aria-expanded", isOpen);

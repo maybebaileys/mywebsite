@@ -192,11 +192,11 @@ summary {
 }
 
 .news-content {
- margin-top: 5px;
+ margin-top: 3px;
 }
 
 .news-content p {
- margin-bottom: 5px;
+ margin-bottom: 3px;
 }
 
 /* Base style for the summary */
@@ -682,58 +682,78 @@ body::after {
  }
 }
 
-/* Hide slideshow on larger screens */
+/* Mobile slideshow */
+/* Default: hide mobile slideshow */
 .mobile-slideshow-section {
- display: none;
+  display: none;
+}
+
+/* Default: show desktop project list */
+.desktop-projectlist {
+  display: block;
 }
 
 @media (max-width: 768px) {
- .mobile-slideshow {
-  position: relative;
-  height: 100vh;
-  width: 72%;
-  padding: 30px 20px;
-  margin: 0 auto;
- }
+  /* Hide desktop list on mobile */
+  .desktop-projectlist {
+    display: none;
+  }
 
- .slide {
-  aspect-ratio: 3 / 4;
-  overflow: hidden;
-  display: none; /* hide all by default */
- }
+  /* 1. Center the entire section on the screen */
+  .mobile-slideshow-section {
+    display: flex; 
+    justify-content: center;
+    /* Change align-items to flex-start and add padding to lift it, 
+       OR keep center and use a negative transform */
+    align-items: center; 
+    height: 100dvh; /* Using 'dvh' accounts for mobile browser bars */
+    width: 100vw;
+    overflow: hidden;
+  /* OPTICAL CENTERING: 
+       Shift the entire slideshow up by 5% to clear the "heavy" bottom */
+    transform: translateY(-15%); 
+  }
 
- .slide.active {
-  display: block; /* only show the active one */
- }
+  /* 2. The slideshow container - This holds the 9:16 shape */
+  .mobile-slideshow {
+    position: relative;
+    width: 75vw; /* Slightly narrower often looks more elegant */
+    max-width: 600px;
+    aspect-ratio: 3 / 4;
+    margin: 0 auto;
+    
+    /* Ensure it stays above any background elements */
+    z-index: 10; 
+  }
 
- .slide img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
- }
+  /* 3. Ensure slides fill the 9:16 container perfectly */
+  .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: none; 
+    overflow: hidden;
+    animation: fadeIn 0.4s ease-in-out;
+  }
 
- .mobile-slideshow img.active {
-  opacity: 1;
-  z-index: 1;
- }
+  @keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+  }
 
-}
+  .slide.active {
+    display: block;
+  }
 
-
-/* Default: show desktop project list, hide mobile slideshow */
-.desktop-projectlist {
- display: block;
-}
-
-/* On mobile screens: hide desktop, show mobile */
-@media screen and (max-width: 768px) {
- .desktop-projectlist {
-  display: none;
- }
- .mobile-slideshow-section {
-  display: block;
- }
+  .slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Crops image to fill the 9:16 area without stretching */
+    display: block;
+    -webkit-tap-highlight-color: transparent; /* Removes blue box from tap */
+  }
 }
 
 /* Default hamburger hidden */
@@ -748,6 +768,9 @@ body::after {
  right: 12px;
  z-index: 1001;
  color: #4f57d3;
+ font-family: Arial, sans-serif; 
+ line-height: 1;
+ transition: transform 0.2s ease;
 }
 
 .mobile-nav {
@@ -760,12 +783,11 @@ body::after {
  height: 100vh;
  line-height: 1em;
  background-color: rgba(255, 255, 255, 0.73);
- backdrop-filter: blur(10px);
+ backdrop-filter: blur(15px);
  padding: 80px 20px 20px;
  box-sizing: border-box;
  overflow-y: auto;
  z-index: 1000;
- -webkit-tap-highlight-color: transparent;
 }
 
 /* Open state */
@@ -859,3 +881,18 @@ display: none;
 .lightbox-close { top: 30px; right: 30px; font-size: 40px; font-weight: 100; }
 .lightbox-prev { left: 40px; top: 50%; transform: translateY(-50%); }
 .lightbox-next { right: 40px; top: 50%; transform: translateY(-50%); }
+
+/* Disable the blue highlight box on mobile/tablets */
+.grid img, 
+.news-section,
+.commission-media img,
+.lb-btn,
+.hamburger,
+header, 
+header a, 
+.mobile-nav a, 
+.hamburger,
+.desktop-projectlist a, 
+a:link {
+  -webkit-tap-highlight-color: transparent;
+}

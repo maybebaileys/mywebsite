@@ -909,3 +909,9 @@ header a,
 a:link {
   -webkit-tap-highlight-color: transparent;
 }
+
+.filmvideo{
+  width:100%;
+  height:auto;
+  display:block;
+}

@@ -643,7 +643,7 @@ body::after {
  .commission-media {
     grid-template-columns: 1fr;
   }
-  .media-item, .media-item.wide, .media-item.full {
+  .media-item, .media-item.wide, .media-item.full, .video-small, .video-large {
     grid-column: span 1;
   }
 
@@ -693,6 +693,7 @@ body::after {
   min-height: 360px;
   aspect-ratio: 16 / 9;
  }
+ 
 }
 
 /* Mobile slideshow */

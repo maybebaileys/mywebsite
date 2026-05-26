@@ -910,10 +910,21 @@ a:link {
   -webkit-tap-highlight-color: transparent;
 }
 
-.filmvideo{
+.filmvideo {
   width:100%;
-  max-width: 1200px;
+  max-width: 1000px;
   height:auto;
   display:block;
 }
 
+/* Small video */
+.video-small {
+  width: 70%;
+  max-width: 850px;
+}
+
+/* Large video */
+.video-large {
+  width: 120%;
+  max-width: 1200px;
+}

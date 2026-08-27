@@ -193,13 +193,6 @@ summary {
  max-width: 850px;
 }
 
-/* Remove default triangle */
-.news-section summary {
- list-style: none;
- cursor: pointer;
- text-transform: lowercase;
-}
-
 .news-section summary::-webkit-details-marker {
  display: none;
 }
@@ -320,7 +313,7 @@ font-style: italic;
 
 .project-media iframe {
  aspect-ratio: 16 / 9;
- max-width: auto;
+ max-width: 100%;
  width: 100%;
  border: none;
  display: block;
@@ -371,9 +364,7 @@ font-style: italic;
 
 .commission-media {
   display: grid;
-  /* 4 columns on Desktop - predictable and easy to manage */
   grid-template-columns: repeat(4, 1fr); 
-  /* IMPORTANT: 'row' (default) ensures 1, 2, 3 order. NEVER use 'dense' here. */
   grid-auto-flow: row; 
   gap: 5px;
   width: 100%;
@@ -404,6 +395,169 @@ font-style: italic;
  width: 100%;
  height: auto;
  border: 0;
+}
+
+
+/* =========================================================
+ commission index
+   ========================================================= */
+
+.commission-page {
+  margin-top: 125px;
+}
+
+.commission-layout {
+  display: grid;
+  grid-template-columns: 420px minmax(0, 1fr);
+  gap: 60px;
+  width: 100%;
+  align-items: start;
+}
+
+.commission-index {
+  position: sticky;
+  top: 85px;
+  align-self: start;
+  max-height: calc(100vh - 105px);
+  overflow-y: auto;
+  scrollbar-width: none;
+  padding-bottom: 25px;
+}
+
+.commission-index::-webkit-scrollbar {
+  display: none;
+}
+
+.commission-index-head {
+  margin-bottom: 25px;
+}
+
+.commission-index-title {
+  font-size: 16px;
+  line-height: 1.15em;
+  margin-bottom: 2px;
+}
+
+.commission-index-sub {
+  font-size: 12px;
+  line-height: 1.15em;
+  margin-bottom: 17px;
+}
+
+.commission-index-contact {
+  font-size: 12px;
+  line-height: 1.15em;
+}
+
+.commission-index-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0px;
+}
+
+.commission-index-link {
+  display: block;
+  max-width: 100%;
+  font-size: 14px;
+  line-height: 1.4em;
+}
+
+.commission-index-link:hover,
+.commission-index-link.is-active {
+  color: #4f57d3;
+  font-style: italic;
+  background-color: #e1ff00;
+  width: max-content; /* ✨ auto-fit to content width */
+  white-space: nowrap; /* Prevent line breaks */
+}
+
+.commission-content {
+  min-width: 0;
+  width: 100%;
+}
+
+/* commission item */
+.commission-item {
+  display: block;
+  border-top: 1px solid #4f57d3;
+  padding: 10px 0 0;
+  margin: 0;
+  scroll-margin-top: 90px;
+}
+
+.commission-meta {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.commission-meta .col {
+  line-height: 1em;
+}
+
+.commission-meta .title {
+  font-size: 14px;
+}
+
+.commission-meta .credit {
+  text-align: right;
+}
+
+.commission-content section[data-animate] {
+  width: 100%;
+  margin: 0 0 58px;
+}
+
+.commission-content .commission-media {
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .commission-page {
+    margin-top: 100px;
+  }
+
+  .commission-layout {
+    display: block;
+  }
+
+  .commission-index {
+    display: none;
+  }
+
+  .commission-content {
+    width: 100%;
+  }
+
+  .commission-item {
+    scroll-margin-top: 80px;
+    border-top: 1px solid #4f57d3;
+    padding-top: 10px;
+  }
+
+  .commission-meta {
+    grid-template-columns: 1fr;
+    gap: 7px;
+    margin-bottom: 10px;
+  }
+
+  .commission-meta .credit {
+    text-align: left;
+  }
+
+  .commission-content section[data-animate] {
+    margin-bottom: 45px;
+  }
+}
+
+/* Responsive video embeds (Vimeo / YouTube) */
+.commission-media .media-item iframe {
+  width: 80%;
+  aspect-ratio: 16 / 9;
+  height: auto;
+  display: block;
 }
 
 .media-item.small {
@@ -454,7 +608,7 @@ font-style: italic;
  object-fit: contain;
  transition: transform 0.5s ease;
  min-width: 250px;
- max-width: auto;
+ max-width: 100%;
 }
 
 .grid figcaption {
@@ -497,9 +651,6 @@ body::after {
 /* Responsive Design */
 
 @media (max-width: 900px) {
- .project-detail {
-  flex-direction: column;
- }
 
  .project-text,
  .project-media {
@@ -522,11 +673,6 @@ body::after {
   flex-direction: column;
   align-items: center;
   text-align: left;
- }
-
- .commission-info {
-  width: 100%;
-  margin-bottom: 20px;
  }
 
  .commission-media img,
@@ -649,7 +795,7 @@ body::after {
 
  .commission-media iframe {
   width: 100%;
-  min-height: 360px;
+  min-height: auto;
   aspect-ratio: 16 / 9;
  }
 
@@ -690,7 +836,7 @@ body::after {
 
  .commission-media iframe {
   width: 100%;
-  min-height: 360px;
+  min-height: auto;
   aspect-ratio: 16 / 9;
  }
  
@@ -905,7 +1051,6 @@ display: none;
 header, 
 header a, 
 .mobile-nav a, 
-.hamburger,
 .desktop-projectlist a, 
 a:link {
   -webkit-tap-highlight-color: transparent;

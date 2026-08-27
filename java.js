@@ -229,3 +229,119 @@ const protectImages = () => {
 };
 
 protectImages();
+
+// ===== Commission Scroll Active State (Migrated from HTML) =====
+(() => {
+  const links = [...document.querySelectorAll('.commission-index-link')];
+  const sections = links
+    .map(link => document.getElementById(link.dataset.target))
+    .filter(Boolean);
+
+  const setActive = (id) => {
+    links.forEach(link => {
+      const active = link.dataset.target === id;
+      link.classList.toggle('is-active', active);
+      if (active) link.setAttribute('aria-current', 'location');
+      else link.removeAttribute('aria-current');
+    });
+  };
+
+  const getActiveSection = () => {
+    const offset = Math.min(140, window.innerHeight * 0.18);
+
+    // At the very bottom of the page, the final commission may never reach
+    // the normal activation line because there is no more content below it.
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 4) {
+      return sections[sections.length - 1];
+    }
+
+    let active = sections[0];
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= offset) {
+        active = section;
+      } else {
+        break;
+      }
+    }
+
+    return active;
+  };
+
+  let ticking = false;
+  const updateActive = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const active = getActiveSection();
+        if (active) setActive(active.id);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+
+ // ===== Custom "Rolling" Easing Scroll =====
+  const customSmoothScroll = (target, duration = 900) => {
+    const targetPosition = target.getBoundingClientRect().top + window.scrollY;
+    const startPosition = window.scrollY;
+    const distance = targetPosition - startPosition;
+    let startTime = null;
+
+    // Easing function (easeInOutCubic) for a smooth start, fast middle, and slow glide to a stop
+    const ease = (time, start, change, duration) => {
+      time /= duration / 2;
+      if (time < 1) return (change / 2) * time * time * time + start;
+      time -= 2;
+      return (change / 2) * (time * time * time + 2) + start;
+    };
+
+    const animation = (currentTime) => {
+      if (startTime === null) startTime = currentTime;
+      const timeElapsed = currentTime - startTime;
+      
+      const run = ease(timeElapsed, startPosition, distance, duration);
+      window.scrollTo(0, run);
+      
+      if (timeElapsed < duration) {
+        window.requestAnimationFrame(animation);
+      } else {
+        // Snap exactly to target at the end just in case of pixel rounding
+        window.scrollTo(0, targetPosition); 
+      }
+    };
+
+    window.requestAnimationFrame(animation);
+  };
+
+  // ===== Updated Click Listener =====
+  links.forEach(link => {
+    link.addEventListener('click', (event) => {
+      const target = document.getElementById(link.dataset.target);
+      if (!target) return;
+
+      event.preventDefault();
+      
+      // Use the new custom scroll function instead of standard scrollIntoView
+      // The '900' is the duration in milliseconds. 
+      customSmoothScroll(target, 900); 
+      
+      setActive(target.id);
+      history.replaceState(null, '', `#${target.id}`);
+    });
+  });
+
+  window.addEventListener('scroll', updateActive, { passive: true });
+  window.addEventListener('resize', updateActive);
+
+  const initialTarget = window.location.hash
+    ? document.getElementById(window.location.hash.slice(1))
+    : null;
+
+  if (initialTarget) {
+    window.requestAnimationFrame(() => {
+      initialTarget.scrollIntoView({ behavior: 'auto', block: 'start' });
+      setActive(initialTarget.id);
+    });
+  } else {
+    updateActive();
+  }
+})();

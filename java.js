@@ -280,7 +280,7 @@ protectImages();
   };
 
  // ===== Custom "Rolling" Easing Scroll =====
-  const customSmoothScroll = (target, duration = 900) => {
+  const customSmoothScroll = (target, duration = 1200) => {
     const targetPosition = target.getBoundingClientRect().top + window.scrollY;
     const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
@@ -312,7 +312,7 @@ protectImages();
     window.requestAnimationFrame(animation);
   };
 
-  // ===== Updated Click Listener =====
+// ===== Updated Click Listener =====
   links.forEach(link => {
     link.addEventListener('click', (event) => {
       const target = document.getElementById(link.dataset.target);
@@ -320,12 +320,13 @@ protectImages();
 
       event.preventDefault();
       
-      // Use the new custom scroll function instead of standard scrollIntoView
-      // The '900' is the duration in milliseconds. 
       customSmoothScroll(target, 900); 
-      
       setActive(target.id);
-      history.replaceState(null, '', `#${target.id}`);
+
+      // Clean the address bar if a hash is present, without adding #commission-X
+      if (window.location.hash) {
+        history.replaceState(null, '', window.location.pathname);
+      }
     });
   });
 

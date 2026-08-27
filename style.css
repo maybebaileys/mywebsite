@@ -468,8 +468,8 @@ font-style: italic;
   color: #4f57d3;
   font-style: italic;
   background-color: #e1ff00;
-  width: max-content; /* ✨ auto-fit to content width */
-  white-space: nowrap; /* Prevent line breaks */
+  width: max-content; 
+  white-space: nowrap; 
 }
 
 .commission-content {

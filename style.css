@@ -337,27 +337,6 @@ font-style: italic;
 }
 
 /* Commissions */
-.commission-entry {
- display: grid;
- grid-template-columns: 1fr 2fr 1fr;
- gap: 10px;
- border-top: 1px solid #4f57d3;
- padding: 10px 0;
- width: 100%;
-}
-
-.commission-entry .col {
- line-height: 1em;
-}
-
-.commission-entry .credit {
- text-align: right;
-}
-
-.commission-info {
- flex: 1;
-}
-
 .commission-info a {
  overflow-wrap: break-word;
 } 
@@ -507,7 +486,7 @@ font-style: italic;
 
 .commission-content section[data-animate] {
   width: 100%;
-  margin: 0 0 58px;
+  margin: 0 0 12px;
 }
 
 .commission-content .commission-media {
